@@ -26,13 +26,13 @@ This design was chosen because:
 ## Setup
 
 ```bash
-python -m venv .venv
+python -m venv venv
 ```
 
 Windows PowerShell:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
@@ -65,13 +65,19 @@ Example JSON:
 
 ```json
 {
-  "certificate_title": "Certificate of Completion",
   "event_name": "Python Bootcamp",
+  "event_date": "2026-10-07",
   "completion_date": "2026-10-07",
   "issuer_name": "Aereo Demo",
   "recipients": [
-    {"name": "Sneha Uppar", "email": "sneha@example.com"},
-    {"name": "Rahul Sharma", "email": "rahul@example.com"}
+    {
+      "name": "Sneha Uppar",
+      "email": "sneha@example.com"
+    },
+    {
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com"
+    }
   ]
 }
 ```
@@ -112,7 +118,7 @@ During processing, certificate generation is wrapped per recipient. If one PDF f
 Run:
 
 ```bash
-pytest -q
+python -m pytest -q
 ```
 
 The test suite covers:
@@ -128,6 +134,7 @@ The test suite covers:
 
 ```text
 .
+.
 ├── app/
 │   ├── main.py
 │   ├── database.py
@@ -138,7 +145,7 @@ The test suite covers:
 │       └── job_service.py
 ├── tests/
 │   └── test_api.py
-├── storage/
+├── storage/              # Generated PDFs/runtime files
 ├── requirements.txt
 ├── .gitignore
 └── README.md
